@@ -3,8 +3,8 @@ BEGIN
 FUNCTION primaryProcess
 BEGIN FUNCTION
 
-    RECIEVE CostPrice FROM (FLOAT) KEYBOARD
-    RECIEVE SellPrice FROM (FLOAT) KEYBOARD
+    RECEIVE CostPrice FROM (FLOAT) KEYBOARD
+    RECEIVE SellPrice FROM (FLOAT) KEYBOARD
 
     CALL FUNCTION negativeCheck(CostPrice)
     CALL FUNCTION negativeCheck(SellPrice)
