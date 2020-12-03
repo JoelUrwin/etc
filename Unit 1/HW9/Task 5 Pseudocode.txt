@@ -1,0 +1,12 @@
+BEGIN
+
+IMPORT BUILTIN FUNCTION math
+
+RECEIVE lawn_dimensions FROM (real) KEYBOARD
+RECEIVE flowerbed_radius FROM (real) KEYBOARD
+
+SET circle_area TO math.pi() * flowerbed_radius
+
+SEND "AMOUNT OF TURF REQUIRED IN METRES : " + circle_area TO DISPLAY
+
+END

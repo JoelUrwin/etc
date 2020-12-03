@@ -1,0 +1,10 @@
+BEGIN
+
+RECEIVE distance FROM (real) KEYBOARD
+RECEIVE time FROM (real) KEYBOARD
+
+SET speed TO distance / time
+
+SEND speed TO DISPLAY
+
+END
