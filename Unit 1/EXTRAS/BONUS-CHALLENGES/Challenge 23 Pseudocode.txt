@@ -1,0 +1,80 @@
+BEGIN
+
+fibbonaci (iterations)
+BEGIN FUNCTION
+
+SET a TO 0
+SET b TO 1
+
+FOR EACH i FROM range(iterations+1)
+    SEND a TO DISPLAY
+    SET c TO a + b 
+    SET a TO b 
+    SET b TO c
+
+END FOR
+END FUNCTION
+
+fibbonaci_reverse (iterations)
+BEGIN FUNCTION
+
+SET a TO 0
+SET b TO 1
+SET fibbonaci_array TO []
+
+
+FOR EACH i FROM range(iterations+1)
+    fibbonaci_array.append()
+    SET c TO a + b 
+    SET a TO b 
+    SET b TO c
+    
+END FOR
+
+FOR EACH i FROM reversed(fibbonaci_array)
+    SEND i TO DISPLAY
+END FOR
+END FUNCTION
+
+fibbonaci_total(iterations)
+BEGIN FUNCTION
+
+SET a TO 0
+SET b TO 1
+SET total TO 0
+
+FOR EACH i FROM range(iterations+1)
+
+    SET c TO a + b 
+    SET a TO b 
+    SET b TO c
+    SET total TO total += a
+END FOR
+
+SEND total TO DISPLAY
+END FUNCTION
+
+menu_logic(user_input, iterations)
+IF user_input == "default" THEN
+    fibbonaci(iterations)
+END IF
+IF user_input == "reverse" THEN
+    fibbonaci_reverse(iterations)
+END IF
+IF user_input == "total" THEN
+    fibbonaci_total(iterations)
+ELSE
+    main()
+END IF
+END FUNCTION
+
+main()
+BEGIN FUNCTION
+
+RECEIVE user_specified_iteration_limit FROM (integer) KEYBOARD
+RECEIVE user_specified_function FROM (string) KEYBOARD
+menu_logic(user_specified_function,user_specified_iteration_limit)
+
+END FUNCTION
+
+main()
