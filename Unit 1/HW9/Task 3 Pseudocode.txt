@@ -1,0 +1,41 @@
+BEGIN
+
+FUNCTION centimetres_to_inches
+BEGIN FUNCTION
+
+RECEIVE centimetres FROM (float) KEYBOARD
+SET inches TO centimetres / 2.54
+SEND inches TO DISPLAY
+
+END FUNCTION
+
+FUNCTION inches_to_centimetres
+BEGIN FUNCTION
+
+RECEIVE inches FROM (float) KEYBOARD
+SET centimeters TO inches * 2.54
+SEND centimeters TO DISPLAY
+
+END FUNCTION
+
+FUNCTION choice_logic(user_choice)
+BEGIN FUNCTION
+    IF user_choice == "I" or "i" THEN
+        inches_to_centimetres()
+    END IF
+    IF user_choice == "C" or "c" THEN
+        centimeters_to_inches()
+    ELSE
+        main()
+    END IF
+
+END FUNCTION
+
+FUNCTION main
+BEGIN FUNCTION
+SEND "Inputting Inches or Centimetres (I/C)? : " TO DISPLAY
+RECEIVE user_input FROM (float) KEYBOARD
+choice_logic(user_choice=user_input)
+END FUNCTION
+
+main()

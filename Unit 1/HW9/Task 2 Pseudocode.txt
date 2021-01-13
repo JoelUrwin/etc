@@ -1,0 +1,23 @@
+BEGIN
+RECEIVE sentence FROM (string) KEYBOARD
+
+FUNCTION word_count(sentence)
+BEGIN FUNCTION
+
+SET counts TO dict()
+SET words TO sentence.split()
+
+FOR EACH word FROM words DO
+    IF word IN counts THEN
+        SET counts[word] TO counts[word] += 1
+    ELSE
+        SET counts[word] TO counts[word] = 1
+    END IF 
+
+    SEND counts TO DISPLAY
+
+END FUNCTION
+
+word_count(sentence)
+
+END

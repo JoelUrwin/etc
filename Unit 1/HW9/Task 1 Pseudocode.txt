@@ -1,0 +1,6 @@
+BEGIN
+
+RECEIVE user_input FROM (string) KEYBOARD
+SEND len(user_input) TO DISPLAY
+
+END

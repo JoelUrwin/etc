@@ -1,0 +1,35 @@
+BEGIN
+
+FUNCTION primaryProcess
+BEGIN FUNCTION
+
+    RECEIVE CostPrice FROM (FLOAT) KEYBOARD
+    RECEIVE SellPrice FROM (FLOAT) KEYBOARD
+
+    CALL FUNCTION negativeCheck(CostPrice)
+    CALL FUNCTION negativeCheck(SellPrice)
+
+    IF SellPrice < CostPrice THEN
+        SET margin_status TO "Loss"
+        SET amount TO SellPrice - CostPrice
+    ELSE
+        SET margin_status TO "Profit"
+        SET amount TO CostPrice - SellPrice
+
+    END IF
+
+    SEND margin_status TO DISPLAY
+    SEND amount TO DISPLAY
+
+FUNCTION negativeCheck (number)
+BEGIN FUNCTION
+
+    IF number < 0 THEN
+        SEND "Number is a negative" TO DISPLAY
+        CALL FUNCTION primaryProcess
+    
+END FUNCTION
+
+CALL FUNCTION primaryProcess
+
+END
