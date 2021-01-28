@@ -1,0 +1,11 @@
+BEGIN
+
+RECEIVE filepath FROM (str) KEYBOARD
+
+SET file TO READ filepath 
+
+SET count len(file.readlines())
+
+SEND count TO DISPLAY
+
+END
